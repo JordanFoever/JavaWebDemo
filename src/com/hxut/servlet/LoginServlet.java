@@ -1,5 +1,6 @@
 package com.hxut.servlet;
 
+import com.hxut.dao.UserDao;
 import com.hxut.model.User;
 
 import javax.servlet.RequestDispatcher;
@@ -20,18 +21,14 @@ public class LoginServlet extends HttpServlet {
        //1.获取用户名和密码
         String username= req.getParameter("username");
         String password= req.getParameter("password");
-        //2.用户名=admin，密码=123456，重定向到user_center。jsp页面
-        if(username!=null&& username.equals("admin")&&  password!=null && password.equals("123456")){
+        //2.从数据库中查询
+        UserDao userDao = new UserDao();
+        User user = userDao.findUserByNameAndPs(username, password);
+
+        if(user!=null&&user.getUsername()!=null){
             //重定向的方式实现页面的跳转
            //通过session对象传递
             HttpSession session = req.getSession();
-            //模拟1个用户
-            User user =new User();
-            user.setName("测试");
-            user.setPhone("13211111111");
-            user.setAddress("武汉华夏理工学院");
-            user.setUsername(username);
-            user.setPassword(password);
 
             //通过session对象传递用户信息
             session.setAttribute("user",user);
@@ -44,6 +41,7 @@ public class LoginServlet extends HttpServlet {
         }
 
     }
+
 
 
     @Override

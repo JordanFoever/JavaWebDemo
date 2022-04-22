@@ -48,7 +48,6 @@ public class RegisterServlet extends HttpServlet {
             dispatcher.forward(req,resp);
         }
 
-
     }
 
     @Override

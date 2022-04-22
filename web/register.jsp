@@ -22,6 +22,15 @@
             <span class="lab">密码：</span><input class="txt" type="password" name="password" placeholder="密码">
         </div>
         <div class="item">
+            <span class="lab">收货人：</span><input class="txt" type="text" name="username" placeholder="请输入收获人">
+        </div>
+        <div class="item">
+            <span class="lab">收货电话：</span><input class="txt" type="number" name="phone" placeholder="请输入收货电话">
+        </div>
+        <div class="item">
+            <span class="lab">收获地址：</span><input class="txt" type="text" name="address" placeholder="请输入收获地址">
+        </div>
+        <div class="item">
             <span class="lab">性别：</span>
             <div class="item-option">
                 <input type="radio" name="gender" value="male">男 &nbsp;
@@ -51,3 +60,4 @@
 
 </body>
 </html>
+

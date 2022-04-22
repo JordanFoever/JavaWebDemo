@@ -30,7 +30,6 @@
                        <div class="more-product"><span> </span></div>
                        <div class="product-img">
                            <img src="${pageContext.request.contextPath}/${goods.image1}" class="img-responsive" alt="${goods.name}" width="240" height="240">
-
                        </div>
                    </a>
                    <div class="product-info ">
@@ -43,11 +42,6 @@
                </div>
 
            </c:forEach>
-
-
-
-
-
 
         </div>
         <!--bootstrap的分页组件-->
@@ -83,3 +77,7 @@
 
 </body>
 </html>
+
+
+
+

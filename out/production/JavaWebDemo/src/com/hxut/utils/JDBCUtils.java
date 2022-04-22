@@ -19,6 +19,7 @@ public class JDBCUtils {
          return  connection;
     }
 
+
     //释放数据库资源-----做修改，删除，更新
     public  static  void release(PreparedStatement preparedStatement,Connection connection){
         //关闭释放preparedStatement对象

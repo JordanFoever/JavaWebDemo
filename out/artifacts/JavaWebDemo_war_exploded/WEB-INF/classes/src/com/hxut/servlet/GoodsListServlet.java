@@ -17,6 +17,7 @@ public class GoodsListServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         GoodsDao goodsDao =new GoodsDao();
+
         ArrayList<Goods> goodsList=goodsDao.findAllGoods();
         req.setAttribute("goodsList",goodsList);
         //请求转发调转到good_list.jsp页面
