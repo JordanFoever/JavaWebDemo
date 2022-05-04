@@ -139,6 +139,33 @@ public class UserDao {
         }
         return 0;
     }
+    /**
+     * 更新用户信息(正在写)
+     */
+    public int updateUser(User user){
+        try {
+            connection = JDBCUtils.getConnection();
+
+            String sql = "update user set name = ?,phone=?,address=? where id =?";
+            preparedStatement= connection.prepareStatement(sql);
+            preparedStatement.setString(1,user.getName());
+            preparedStatement.setString(2,user.getPhone());
+            preparedStatement.setString(3,user.getAddress());
+            preparedStatement.setInt(4,user.getId());
+
+            int rows = preparedStatement.executeUpdate();
+            return rows;
+
+
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }finally {
+            JDBCUtils.release(preparedStatement,connection);
+        }
+        return 0;
+    }
 }
 
 

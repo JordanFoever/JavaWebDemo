@@ -16,10 +16,13 @@
 <div  class="form-block">
     <form action="registerServlet" method="post">
         <div class="item">
-            <span class="lab">用户名：</span><input class="txt" type="text" id="userid" name="username" placeholder="用户名">
+            <span class="lab">用户名：</span><input class="txt" type="text"  name="username" placeholder="用户名">
         </div>
         <div class="item">
             <span class="lab">密码：</span><input class="txt" type="password" name="password" placeholder="密码">
+        </div>
+        <div class="item">
+            <span class="lab">邮箱：</span><input class="txt" type="text" name="email" placeholder="邮箱">
         </div>
         <div class="item">
             <span class="lab">收货人：</span><input class="txt" type="text" name="username" placeholder="请输入收获人">
@@ -30,7 +33,8 @@
         <div class="item">
             <span class="lab">收获地址：</span><input class="txt" type="text" name="address" placeholder="请输入收获地址">
         </div>
-        <div class="item">
+
+      <%--  <div class="item">
             <span class="lab">性别：</span>
             <div class="item-option">
                 <input type="radio" name="gender" value="male">男 &nbsp;
@@ -44,7 +48,8 @@
                 <input type="checkbox" name="hobby" value="围棋">围棋&nbsp;
                 <input type="checkbox" name="hobby" value="射击">射击
             </div>
-        </div>
+        </div>--%>
+
 
         <div class="btn-block">
             <input class="btn" type="submit" value="注册">

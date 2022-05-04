@@ -1,5 +1,8 @@
 package com.hxut.servlet;
 
+import com.hxut.dao.UserDao;
+import com.hxut.model.User;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,21 +22,15 @@ public class RegisterServlet extends HttpServlet {
         //解决输出中文乱码问题
         resp.setContentType("text/html;charset=UTF-8");
 
-       String username= req.getParameter("username");
-       String password= req.getParameter("password");
-       String gender= req.getParameter("gender");
-       String hobbys[]= req.getParameterValues("hobby");
-       System.out.println("username:"+username);
-       System.out.println("password:"+password);
-       System.out.println("gender:"+gender);
-       if (hobbys!=null){
-           for (int i = 0; i < hobbys.length; i++) {
-               System.out.println("hobbys:"+hobbys[i]);
-
-           }
-       }
-
-       //3通过请求转发的方式跳转页面
+        String username= req.getParameter("username");
+        String password= req.getParameter("password");
+        System.out.println("username:"+username);
+        System.out.println("password:"+password);
+        String email = req.getParameter("email");
+        String name = req.getParameter("name");
+        String phone = req.getParameter("phone");
+        String address = req.getParameter("address");
+        //3通过请求转发的方式跳转页面
         //用户名和密码为空 ，跳转注册页面，不为空，就跳转到登录页面
         if(username==null|| username.isEmpty() || password==null || password.isEmpty()){
             //4.通过request对象传递数据
@@ -42,10 +39,30 @@ public class RegisterServlet extends HttpServlet {
             dispatcher.forward(req,resp);
         }else {
             //重定向的方式实现页面的跳转
-            req.setAttribute("message","注册成功");
-           resp.sendRedirect("https://www.baidu.com/");
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/login.jsp");
-            dispatcher.forward(req,resp);
+            UserDao userDao = new UserDao();
+            User user = userDao.findUserByUsername(username);
+            if(user != null&& user.getUsername() != null){
+                req.setAttribute("message","用户名存在");
+                RequestDispatcher dispatcher = req.getRequestDispatcher("/register.jsp");
+                dispatcher.forward(req,resp);
+            }else {
+                user.setUsername(username);
+                user.setPassword(password);
+                user.setName(name);
+                user.setName(name);
+                user.setPhone(phone);
+                user.setAddress(address);
+                user.setEmail(email);
+                int rows = userDao.addUser(user);
+                if(rows > 0){
+                    RequestDispatcher dispatcher = req.getRequestDispatcher("/login.jsp");
+                    dispatcher.forward(req,resp);
+                }else {
+                    req.setAttribute("massage","执行插入操作失败");
+                    RequestDispatcher dispatcher = req.getRequestDispatcher("/register.jsp");
+                    dispatcher.forward(req,resp);
+                }
+            }
         }
 
     }
