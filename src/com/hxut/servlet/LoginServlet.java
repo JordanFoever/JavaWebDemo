@@ -6,10 +6,7 @@ import com.hxut.model.User;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.io.IOException;
 @WebServlet(name = "LoginServlet",urlPatterns = "/loginServlet")
 public class LoginServlet extends HttpServlet {
@@ -24,6 +21,16 @@ public class LoginServlet extends HttpServlet {
         //2.从数据库中查询
         UserDao userDao = new UserDao();
         User user = userDao.findUserByNameAndPs(username, password);
+
+        // 记住密码的实现
+        String remebers = req.getParameter("remebers");
+
+        if(remebers != null && remebers.equals("true")){
+            Cookie cookie1 = new Cookie("username", username);
+            Cookie cookie2 = new Cookie("password", password);
+            resp.addCookie(cookie1);
+            resp.addCookie(cookie2);
+        }
 
         if(user!=null&&user.getUsername()!=null){
             //重定向的方式实现页面的跳转

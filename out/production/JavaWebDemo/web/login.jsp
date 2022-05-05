@@ -18,11 +18,19 @@
 
     <form action="loginServlet" method="post">
         <div class="item">
-            <span class="lab">用户名：</span><input class="txt" type="text" id="userid" name="username" placeholder="用户名">
+            <span class="lab">用户名：</span><input class="txt" type="text" id="userid" name="username" placeholder="用户名" value="${cookie.username.value}">
         </div>
         <div class="item">
-            <span class="lab">密码：</span><input class="txt" type="password" name="password" placeholder="密码">
+            <span class="lab">密码：</span><input class="txt" type="password" name="password" placeholder="密码" value="${cookie.password.value}">
         </div>
+
+          <div class="item">
+            <span class="lab"></span>
+            <div class="item-option">
+                <input type="checkbox" name="remebers" value="true">&nbsp;记住密码：
+            </div>
+        </div>
+
         <div class="btn-block">
             <input class="btn" type="submit" value="登录">
             <input class="btn" type="reset" value="重置">
