@@ -36,7 +36,7 @@
                        <div class="product-info-cust">
                            <h4>${goods.name}</h4>
                            <span class="item_price">¥ ${goods.price}</span>
-                           <a href="#" class="item_add items">加入购物车</a>
+                           <a href="${pageContext.request.contextPath}/addGoodsToCartServlet?id=${goods.id}" class="item_add items">加入购物车</a>
                        </div>
                    </div>
                </div>

@@ -53,5 +53,44 @@ public class GoodsDao {
         //在执行代码中抛出异常,返回null
         return  null;
     }
+    /**
+     * 通过id删除商品的信息
+     */
+    public int deleteGoodById(int id){return 0;}
+    /**
+     * 通过id查寻产品的信息
+     * @param id
+     * @return
+     */
+    public Goods findGoodsById(int id){
+        try {
+            connection = JDBCUtils.getConnection();
+            String sql = "SELECT * from goods where id = ?";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1,id);
+            java.sql.ResultSet resultSet = preparedStatement.executeQuery();
+            Goods goods = new Goods();
+            // 第一个光标指向的是表头
+            while (resultSet.next()){
+                goods.setId(resultSet.getInt("id"));
+                goods.setName(resultSet.getString("name"));
+                goods.setCover(resultSet.getString("cover"));
+                goods.setImage1(resultSet.getString("image1"));
+                goods.setImage2(resultSet.getString("image2"));
+                goods.setPrice(resultSet.getFloat("price"));
+                goods.setIntro(resultSet.getString("intro"));
+                goods.setStock(resultSet.getInt("stock"));
+            }
+            return goods;
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            //释放数据库资源
+            JDBCUtils.release(resultSet,preparedStatement,connection);
+        }
+        return null;
+    }
 }
 

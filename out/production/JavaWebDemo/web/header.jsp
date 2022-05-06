@@ -17,8 +17,7 @@
     <!--登录成功后，显示个人中心和退出标签-->
     <c:if test="${!empty sessionScope.user}">
         <a href="user_center.jsp">个人中心</a>
-        <a href="#">退出</a>
-
+        <a href="logoutServlet">退出</a>
     </c:if>
     <c:if test="${empty sessionScope.user}">
         <!--没有登录，显示登录和注册标签-->

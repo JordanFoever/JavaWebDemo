@@ -27,7 +27,7 @@
           <div class="item">
             <span class="lab"></span>
             <div class="item-option">
-                <input type="checkbox" name="remebers" value="true">&nbsp;记住密码：
+                <input type="checkbox" name="remebers" value="true">&nbsp;记住密码
             </div>
         </div>
 
