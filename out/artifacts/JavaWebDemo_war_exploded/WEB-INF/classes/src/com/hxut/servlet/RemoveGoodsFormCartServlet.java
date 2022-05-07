@@ -36,5 +36,10 @@ public class RemoveGoodsFormCartServlet extends HttpServlet {
         session.setAttribute("cart",cart);
         //重定向到显示购物车页面
         resp.sendRedirect(req.getContextPath()+"/good_cart.jsp");
+
+
+
     }
 }
+
+

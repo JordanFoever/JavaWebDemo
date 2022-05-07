@@ -25,16 +25,7 @@
         <a href="register.jsp">注册</a>
 
     </c:if>
-
-
-
-
-
-
-
-
-
-    <a href="cart.jsp">购物车</a>
+    <a href="good_cart.jsp">购物车</a>
 
     <!--登录的是超级用户，显示后台管理标签-->
     <a href="admin/admin_index.jsp">后台管理</a>|

@@ -49,7 +49,7 @@
     </c:forEach>
 
     <div class="cart-price">
-        <h3>订单金瓯:${sessionScope.cart.sumMoney}</h3>
+        <h3>订单金瓯:${sessionScope.cart.sumMoney}元</h3>
         <a href="#" class="submit">提交订单</a>
     </div>
 </div>
